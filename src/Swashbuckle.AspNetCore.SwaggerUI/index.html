@@ -102,6 +102,10 @@
             if (interceptors.ResponseInterceptorFunction)
                 configObject.responseInterceptor = parseFunction(interceptors.ResponseInterceptorFunction);
 
+            // Map plugins from window to config object if they exist
+            if (Array.isArray(window.swaggerPlugins))
+                configObject.plugins = window.swaggerPlugins
+
             // Begin Swagger UI call region
 
             const ui = SwaggerUIBundle(configObject);
